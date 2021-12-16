@@ -4,16 +4,26 @@
 
 # Learning3D: A Modern Library for Deep Learning on 3D Point Clouds Data.
 
-**[Documentation](https://github.com/vinits5/learning3d#documentation) | [Blog](https://medium.com/@vinitsarode5/learning3d-a-modern-library-for-deep-learning-on-3d-point-clouds-data-48adc1fd3e0?sk=0beb59651e5ce980243bcdfbf0859b7a) | [Demo](https://github.com/vinits5/learning3d/blob/master/examples/test_pointnet.py)**
+**[Documentation](https://github.com/vinits5/learning3d#documentation)
+| [Blog](https://medium.com/@vinitsarode5/learning3d-a-modern-library-for-deep-learning-on-3d-point-clouds-data-48adc1fd3e0?sk=0beb59651e5ce980243bcdfbf0859b7a)
+| [Demo](https://github.com/vinits5/learning3d/blob/master/examples/test_pointnet.py)**
 
-Learning3D is an open-source library that supports the development of deep learning algorithms that deal with 3D data. The Learning3D exposes a set of state of art deep neural networks in python. A modular code has been provided for further development. We welcome contributions from the open-source community.
+Learning3D is an open-source library that supports the development of deep learning algorithms that deal with 3D data.
+The Learning3D exposes a set of state of art deep neural networks in python. A modular code has been provided for
+further development. We welcome contributions from the open-source community.
 
 ## Latest News:
-1. \[24 Dec. 2020\]: [MaskNet](https://arxiv.org/pdf/2010.09185.pdf) is now ready to enhance the performance of registration algorithms in learning3d for occluded point clouds.
-2. \[24 Dec. 2020\]: Loss based on the predicted and ground truth correspondences is added in learning3d after consideration of [Correspondence Matrices are Underrated](https://arxiv.org/pdf/2010.16085.pdf) paper.
-3. \[24 Dec. 2020\]: [PointConv](https://arxiv.org/abs/1811.07246), latent feature estimation using convolutions on point clouds is now available in learning3d.
-4. \[16 Oct. 2020\]: [DeepGMR](https://wentaoyuan.github.io/deepgmr/), registration using gaussian mixture models is now available in learning3d
-5. \[14 Oct. 2020\]: Now, use your own data in learning3d. (Check out [UserData](https://github.com/vinits5/learning3d#use-your-own-data) functionality!)
+
+1. \[24 Dec. 2020\]: [MaskNet](https://arxiv.org/pdf/2010.09185.pdf) is now ready to enhance the performance of
+   registration algorithms in learning3d for occluded point clouds.
+2. \[24 Dec. 2020\]: Loss based on the predicted and ground truth correspondences is added in learning3d after
+   consideration of [Correspondence Matrices are Underrated](https://arxiv.org/pdf/2010.16085.pdf) paper.
+3. \[24 Dec. 2020\]: [PointConv](https://arxiv.org/abs/1811.07246), latent feature estimation using convolutions on
+   point clouds is now available in learning3d.
+4. \[16 Oct. 2020\]: [DeepGMR](https://wentaoyuan.github.io/deepgmr/), registration using gaussian mixture models is now
+   available in learning3d
+5. \[14 Oct. 2020\]: Now, use your own data in learning3d. (Check
+   out [UserData](https://github.com/vinits5/learning3d#use-your-own-data) functionality!)
 
 ## Available Computer Vision Algorithms in Learning3D
 
@@ -27,6 +37,7 @@ Learning3D is an open-source library that supports the development of deep learn
 | 6 | [Inlier Estimation](https://github.com/vinits5/learning3d#use-of-inlier-estimation-network-masknet) | MaskNet | 
 
 ## Available Pretrained Models
+
 1. PointNet
 2. PCN
 3. PointNetLK
@@ -36,29 +47,36 @@ Learning3D is an open-source library that supports the development of deep learn
 7. FlowNet3D
 8. RPM-Net (clean-trained.pth, noisy-trained.pth, partial-pretrained.pth)
 9. DeepGMR
-10. PointConv (Download from this [link](https://github.com/DylanWusee/pointconv_pytorch/blob/master/checkpoints/checkpoint.pth))
+10. PointConv (Download from
+    this [link](https://github.com/DylanWusee/pointconv_pytorch/blob/master/checkpoints/checkpoint.pth))
 11. MaskNet
 
 ## Available Datasets
+
 1. ModelNet40
 
 ## Available Loss Functions
+
 1. Classification Loss (Cross Entropy)
 2. Registration Losses (FrobeniusNormLoss, RMSEFeaturesLoss)
 3. Distance Losses (Chamfer Distance, Earth Mover's Distance)
 4. Correspondence Loss (based on this [paper](https://arxiv.org/pdf/2010.16085.pdf))
 
 ## Technical Details
+
 ### Supported OS
+
 1. Ubuntu 16.04
 2. Ubuntu 18.04
 3. Linux Mint
 
 ### Requirements
+
 1. CUDA 10.0 or higher
 2. Pytorch 1.3 or higher
 
 ## How to use this library?
+
 **Important Note: Clone this repository in your project. Please don't add your codes in "learning3d" folder.**
 
 1. All networks are defined in the module "models".
@@ -67,8 +85,11 @@ Learning3D is an open-source library that supports the development of deep learn
 4. All pretrained models are provided in learning3d/pretrained folder.
 
 ## Documentation
+
 B: Batch Size, N: No. of points and C: Channels.
-####  Use of Point Embedding Networks:
+
+#### Use of Point Embedding Networks:
+
 > from learning3d.models import PointNet, DGCNN, PPFNet\
 > pn = PointNet(emb_dims=1024, input_shape='bnc', use_bn=False)\
 > dgcnn = DGCNN(emb_dims=1024, input_shape='bnc')\
@@ -84,6 +105,7 @@ B: Batch Size, N: No. of points and C: Channels.
 | 6. | num_neighbours | Integer | Scalar | 64 | Maximum number of points to consider per cluster |
 
 #### Use of Classification / Segmentation Network:
+
 > from learning3d.models import Classifier, PointNet, Segmentation\
 > classifier = Classifier(feature_model=PointNet(), num_classes=40)\
 > seg = Segmentation(feature_model=PointNet(), num_classes=40)
@@ -95,6 +117,7 @@ B: Batch Size, N: No. of points and C: Channels.
 | 3. | output | tensor | Classification: Bx40, Segmentation: BxNx40 | 10, 40 | Probabilities of each category or each point |
 
 #### Use of Registration Networks:
+
 > from learning3d.models import PointNet, PointNetLK, DCP, iPCRNet, PRNet, PPFNet, RPMNet\
 > pnlk = PointNetLK(feature_model=PointNet(), delta=1e-02, xtol=1e-07, p0_zero_mean=True, p1_zero_mean=True, pooling='max')\
 > dcp = DCP(feature_model=PointNet(), pointer_='transformer', head='svd')\
@@ -116,6 +139,7 @@ B: Batch Size, N: No. of points and C: Channels.
 | 10. | nearest_neighbores | Integer | 20/any integer | Give number of nearest neighbors used to estimate features | DeepGMR |
 
 #### Use of Inlier Estimation Network (MaskNet):
+
 > from learning3d.models import MaskNet, PointNet\
 > masknet = MaskNet(feature_model=PointNet(), is_training=True)
 
@@ -125,6 +149,7 @@ B: Batch Size, N: No. of points and C: Channels.
 | 2. | is_training | Boolean | True / False | Specify if the network will undergo training or testing |
 
 #### Use of Point Completion Network:
+
 > from learning3d.models import PCN\
 > pcn = PCN(emb_dims=1024, input_shape='bnc', num_coarse=1024, grid_size=4, detailed_output=True)
 
@@ -137,6 +162,7 @@ B: Batch Size, N: No. of points and C: Channels.
 | 5. | detailed_output | Boolean | True / False | Choice for additional module to create detailed output point cloud|
 
 #### Use of PointConv:
+
 Use the following to create pretrained model provided by authors.
 > from learning3d.models import create_pointconv\
 > PointConv = create_pointconv(classifier=True, pretrained='path of checkpoint')\
@@ -148,7 +174,8 @@ Use the following to create your own PointConv model.
 > PointConv = create_pointconv(classifier=False, pretrained=None)\
 > ptconv = PointConv(emb_dims=1024, input_shape='bnc', input_channel_dim=3, classifier=True)
 
-PointConv variable is a class. Users can use it to create a sub-class to override *create_classifier* and *create_structure* methods in order to change PointConv's network architecture.
+PointConv variable is a class. Users can use it to create a sub-class to override *create_classifier* and *
+create_structure* methods in order to change PointConv's network architecture.
 
 | Sr. No. | Variable | Data type | Choices | Use |
 |:---:|:---:|:---:|:---:|:---:|
@@ -159,10 +186,12 @@ PointConv variable is a class. Users can use it to create a sub-class to overrid
 | 5. | pretrained | Boolean | String | Give path of the pretrained classifier model (only use it for weights given by authors) |
 
 #### Use of Flow Estimation Network:
+
 > from learning3d.models import FlowNet3D\
 > flownet = FlowNet3D()
 
 #### Use of Data Loaders:
+
 > from learning3d.data_utils import ModelNet40Data, ClassificationData, RegistrationData, FlowData\
 > modelnet40 = ModelNet40Data(train=True, num_points=1024, download=True)\
 > classification_data = ClassificationData(data_class=ModelNet40Data())\
@@ -181,6 +210,7 @@ PointConv variable is a class. Users can use it to create a sub-class to overrid
 | 8. | noise | Boolean | True / False | Add noise in source point cloud |
 
 #### Use Your Own Data:
+
 > from learning3d.data_utils import UserData\
 > dataset = UserData(application, data_dict)
 
@@ -196,6 +226,7 @@ PointConv variable is a class. Users can use it to create a sub-class to overrid
 |    |                   | 'flow' | Ground Truth Flow Vector (BxNx3)|
 
 #### Use of Loss Functions:
+
 > from learning3d.losses import RMSEFeaturesLoss, FrobeniusNormLoss, ClassificationLoss, EMDLoss, ChamferDistanceLoss, CorrespondenceLoss\
 > rmse = RMSEFeaturesLoss()\
 > fn_loss = FrobeniusNormLoss()\
@@ -214,13 +245,16 @@ PointConv variable is a class. Users can use it to create a sub-class to overrid
 | 6. | CorrespondenceLoss | Computes cross entropy loss using the predicted correspondence and ground truth correspondence for each source point |
 
 ### To run codes from examples:
+
 1. Copy the file from "examples" folder outside of the directory "learning3d"
 2. Now, run the file. (ex. python test_pointnet.py)
+
 - Your Directory/Location
-	- learning3d
-	- test_pointnet.py
+    - learning3d
+    - test_pointnet.py
 
 ### References:
+
 1. [PointNet:](https://arxiv.org/abs/1612.00593) Deep Learning on Point Sets for 3D Classification and Segmentation
 2. [Dynamic Graph CNN](https://arxiv.org/abs/1801.07829) for Learning on Point Clouds
 3. [PPFNet:](https://arxiv.org/pdf/1802.02669.pdf) Global Context Aware Local Features for Robust 3D Point Matching
@@ -232,7 +266,8 @@ PointConv variable is a class. Users can use it to create a sub-class to overrid
 9. [FlowNet3D:](https://arxiv.org/abs/1806.01411) Learning Scene Flow in 3D Point Clouds
 10. [PCN:](https://arxiv.org/pdf/1808.00671.pdf) Point Completion Network
 11. [RPM-Net:](https://arxiv.org/pdf/2003.13479.pdf) Robust Point Matching using Learned Features
-12. [3D ShapeNets:](https://people.csail.mit.edu/khosla/papers/cvpr2015_wu.pdf) A Deep Representation for Volumetric Shapes
+12. [3D ShapeNets:](https://people.csail.mit.edu/khosla/papers/cvpr2015_wu.pdf) A Deep Representation for Volumetric
+    Shapes
 13. [DeepGMR:](https://arxiv.org/abs/2008.09088) Learning Latent Gaussian Mixture Models for Registration
 14. [CMU:](https://arxiv.org/pdf/2010.16085.pdf) Correspondence Matrices are Underrated
 15. [MaskNet:](https://arxiv.org/pdf/2010.09185.pdf) A Fully-Convolutional Network to Estimate Inlier Points

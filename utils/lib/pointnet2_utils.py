@@ -72,6 +72,7 @@ class GatherOperation(Function):
 
 gather_operation = GatherOperation.apply
 
+
 class KNN(Function):
 
     @staticmethod
@@ -99,7 +100,10 @@ class KNN(Function):
     @staticmethod
     def backward(ctx, a=None, b=None):
         return None, None, None
+
+
 knn = KNN.apply
+
 
 class ThreeNN(Function):
 

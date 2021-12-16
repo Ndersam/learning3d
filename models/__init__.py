@@ -16,6 +16,7 @@ from .pcn import PCN
 from .deepgmr import DeepGMR
 
 try:
-	from .flownet3d import FlowNet3D
+    from .flownet3d import FlowNet3D
 except:
-	print("Error raised in pointnet2 module for FlowNet3D Network!\nEither don't use pointnet2_utils or retry it's setup.")
+    print(
+        "Error raised in pointnet2 module for FlowNet3D Network!\nEither don't use pointnet2_utils or retry it's setup.")

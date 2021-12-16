@@ -233,4 +233,3 @@ class FC(nn.Sequential):
 
             if activation is not None:
                 self.add_module(name + 'activation', activation)
-
